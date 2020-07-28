@@ -1,7 +1,7 @@
 import { pipe, tap } from 'ramda'
 import { connect } from 'react-redux'
-import * as LogIn from '../../Redux/State/LogIn'
-import Login from './Login'
+import * as LogIn from '../../redux/state/login.state'
+import Login from './login'
 
 // mapStateToProps :: State -> Props
 const mapStateToProps = state => ({

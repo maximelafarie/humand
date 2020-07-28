@@ -1,5 +1,5 @@
 import React from 'react'
-import './Login.scss'
+import './login.scss'
 
 const LoginForm = ({ submitLogin, isLoading, error }) => (
   <div className="box columns is-centered">
