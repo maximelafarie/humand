@@ -13,7 +13,7 @@ jobs:
 
     tests:
         machine:
-            docker_layer_caching: true
+            docker_layer_caching: false
             image: ubuntu-1604:201903-01
         working_directory: ~/docker-starter
         steps:
@@ -54,7 +54,7 @@ jobs:
                     echo $pdo->query('SELECT * from test')->fetchAll() ? 'database OK' : 'database KO';
                     EOPHP
 
-                    curl --fail --insecure --silent -H "Host: app.test" https://127.0.0.1 | grep "database OK"
+                    curl --fail --insecure --silent -H "Host: humand.test" https://127.0.0.1 | grep "database OK"
 
 workflows:
     version: 2
