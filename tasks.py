@@ -186,7 +186,7 @@ def help(c):
         response = json.loads(requests.get('http://%s:8080/api/http/routers' % (c.root_domain)).text)
         gen = (router for router in response if re.match("^%s-(.*)@docker$" % (c.project_name), router['name']))
         for router in gen:
-            if router['service'] != 'frontend-%s' % (c.project_name):
+            if router['service'] != 'api-%s' % (c.project_name):
                 host = re.search('Host\(\`(?P<host>.*)\`\)', router['rule']).group('host')
                 if host:
                     scheme = 'https' if 'https' in router['using'] else router['using'][0]
