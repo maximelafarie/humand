@@ -7,7 +7,7 @@ root_domain = project_name + '.test'
 # The "frontend" container will receive all the traffic
 extra_domains = []
 # This is the host directory containing your PHP application
-project_directory = 'application/backend'
+project_directory = 'application'
 
 # Usually, you should not edit the file above this point
 

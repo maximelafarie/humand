@@ -10,19 +10,39 @@ services:
             - "/var/run/docker.sock:/var/run/docker.sock"
         network_mode: host
 
-    frontend:
-        build: services/frontend
+    api:
+        build: services/api
         depends_on:
             - db
         volumes:
-            - "../../${PROJECT_DIRECTORY}:/home/app/application:cached"
+            - "../../${PROJECT_DIRECTORY}/backend:/home/app/application:cached"
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.${PROJECT_NAME}-frontend.rule=Host(${PROJECT_DOMAINS})"
-            - "traefik.http.routers.${PROJECT_NAME}-frontend.tls=true"
-            - "traefik.http.routers.${PROJECT_NAME}-frontend-unsecure.rule=Host(${PROJECT_DOMAINS})"
-            # Comment the next line to be able to access frontend via HTTP instead of HTTPS
-            - "traefik.http.routers.${PROJECT_NAME}-frontend-unsecure.middlewares=redirect-to-https@file"
+            - "traefik.http.routers.${PROJECT_NAME}-api.rule=Host(`api.${PROJECT_ROOT_DOMAIN}`)"
+#            - "traefik.http.routers.${PROJECT_NAME}-api.tls=true"
+#            - "traefik.http.routers.${PROJECT_NAME}-api-unsecure.rule=Host(`api.${PROJECT_ROOT_DOMAIN}`)"
+#            # Comment the next line to be able to access api via HTTP instead of HTTPS
+#            - "traefik.http.routers.${PROJECT_NAME}-api-unsecure.middlewares=redirect-to-https@file"
+
+    front:
+        # Use a static website hosting service in production
+        # See https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
+        build:
+            context: ./../../application/front
+            dockerfile: ./../../infrastructure/docker/services/front/Dockerfile
+        tty: true
+        user: '1000'
+        volumes:
+            - "../../${PROJECT_DIRECTORY}/front:/home/app/application"
+        ports:
+            - "3000:3000"
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.${PROJECT_NAME}-front.rule=Host(${PROJECT_DOMAINS})"
+#            - "traefik.http.routers.${PROJECT_NAME}-front.tls=true"
+#            - "traefik.http.routers.${PROJECT_NAME}-front-unsecure.rule=Host(${PROJECT_DOMAINS})"
+            # Comment the next line to be able to access front via HTTP instead of HTTPS
+#            - "traefik.http.routers.${PROJECT_NAME}-front-unsecure.middlewares=redirect-to-https@file"
 
     db:
         image: mariadb
