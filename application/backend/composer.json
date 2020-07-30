@@ -8,7 +8,9 @@
         "api-platform/core": "^2.1",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^1.6 || ^2.0",
+        "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.4.5",
+        "lexik/jwt-authentication-bundle": "^2.8",
         "nelmio/cors-bundle": "^1.5 || ^2.0",
         "phpdocumentor/reflection-docblock": "^3.0 || ^4.0 || ^5.0",
         "ramsey/uuid": "^4.0",
@@ -25,7 +27,11 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.20"
+        "hautelook/alice-bundle": "^2.7",
+        "symfony/maker-bundle": "^1.20",
+        "symfony/stopwatch": "^5.1",
+        "symfony/twig-bundle": "^5.1",
+        "symfony/web-profiler-bundle": "^5.1"
     },
     "config": {
         "optimize-autoloader": true,

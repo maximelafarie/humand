@@ -1,0 +1,12 @@
+App\Entity\User:
+    user_1:
+        firstName: "<firstName()>"
+        lastName: "<lastName()>"
+        email: "user@humand.test"
+        password: "<encodePassword('Pwd111111$')>"
+
+    user_{2..5}:
+        firstName: "<firstName()>"
+        lastName: "<lastName()>"
+        email: "<email()>"
+        password: "<encodePassword('Pwd111111$')>"
