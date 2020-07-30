@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
-import LogIn from './Login/Container'
+import LogIn from './login/container'
 
 const App = ({ store }) => (
   <ReduxProvider store={store}>

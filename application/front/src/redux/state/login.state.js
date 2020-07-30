@@ -1,4 +1,4 @@
-import { createReducer } from '../../Utils/ReduxUtils'
+import { createReducer } from '../../utils/redux-utils'
 
 // INITIAL_STATE :: State
 export const INITIAL_STATE = {

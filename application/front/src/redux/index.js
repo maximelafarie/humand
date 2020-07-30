@@ -1,6 +1,6 @@
 import { always } from 'ramda'
 import { combineReducers } from 'redux'
-import LogIn from './State/LogIn'
+import LogIn from './state/login.state'
 
 // INIT :: String
 export const INIT = '@fpstarter/App/INIT'
