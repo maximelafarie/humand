@@ -2,6 +2,7 @@ version: '3.7'
 
 volumes:
     db-data: {}
+    node_modules: {}
 
 services:
     router:
@@ -34,6 +35,7 @@ services:
         user: '1000'
         volumes:
             - "../../${PROJECT_DIRECTORY}/front:/home/app/application"
+            - "node_modules:/home/app/application/node_modules"
         ports:
             - "3000:3000"
         labels:
