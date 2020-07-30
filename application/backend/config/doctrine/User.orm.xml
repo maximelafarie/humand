@@ -9,8 +9,10 @@
 
         <id name="id" column="id" type="uuid"/>
 
+        <field name="firstName"/>
+        <field name="lastName"/>
         <field name="email" unique="true"/>
-        <field name="roles" type="json"/>
+        <field name="roles" type="json_array"/>
         <field name="password"/>
     </entity>
 
