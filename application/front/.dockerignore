@@ -1,0 +1,15 @@
+**/*.log
+**/*.md
+!src/Changelog.md
+**/._*
+**/.dockerignore
+**/.DS_Store
+**/.git/
+**/.gitattributes
+**/.gitignore
+**/.gitmodules
+**/Dockerfile*
+**/Thumbs.db
+.env*
+build/
+node_modules/

@@ -6,7 +6,7 @@ const LoginForm = ({ submitLogin, isLoading, error }) => (
     <div className="column is-12 has-text-centered">
       <div className="main-title">
         <div>
-          <h2>Mire de connexion</h2>
+          <h2>Mire de connexion Humand</h2>
         </div>
       </div>
       <form id="login" onSubmit={submitLogin}>
