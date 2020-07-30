@@ -1,11 +1,13 @@
 from invoke import task
 from shlex import quote
 from colorama import Fore
+from os import path
 import json
 import os
 import re
 import requests
 import subprocess
+import os.path
 
 
 @task
@@ -50,6 +52,7 @@ def start(c):
     cache_clear(c)
     install(c)
     migrate(c)
+    jwtKeys(c)
     start_workers(c)
 
     print(Fore.GREEN + 'The stack is now up and running.')
@@ -71,8 +74,8 @@ def cache_clear(c):
     """
     Clear the application cache
     """
-    # with Builder(c):
-    #     docker_compose_run(c, 'rm -rf var/cache/ && php bin/console cache:warmup', no_deps=True)
+    with Builder(c):
+        docker_compose_run(c, 'rm -rf var/cache/ && php bin/console cache:warmup', no_deps=True, workdir='/home/app/application/backend')
 
 
 @task
@@ -80,10 +83,25 @@ def migrate(c):
     """
     Migrate database schema
     """
-    # with Builder(c):
-    #     docker_compose_run(c, 'php bin/console doctrine:database:create --if-not-exists')
-    #     docker_compose_run(c, 'php bin/console doctrine:migration:migrate -n --allow-no-migration')
+    with Builder(c):
+        docker_compose_run(c, 'php bin/console doctrine:database:create --if-not-exists', workdir='/home/app/application/backend')
+        docker_compose_run(c, 'php bin/console doctrine:migration:migrate -n --allow-no-migration', workdir='/home/app/application/backend')
+        docker_compose_run(c, 'php bin/console hautelook:fixtures:load -n', workdir='/home/app/application/backend')
 
+@task
+def jwtKeys(c):
+    """
+    Jwt config
+    """
+    print(path.exists(c.root_dir + '/application/backend/config/jwt/private.pem'))
+    if path.exists(c.root_dir + '/application/backend/config/jwt/private.pem') == False:
+        print("JWT keys not exist, generate them")
+        with Builder(c):
+            docker_compose_run(c, 'mkdir -p config/jwt', workdir='/home/app/application/backend')
+            docker_compose_run(c, 'openssl genrsa -passout pass:dd18c9fd60555b9c0ab434ebe78bdee6 -out config/jwt/private.pem -aes256 4096', workdir='/home/app/application/backend')
+            docker_compose_run(c, 'openssl rsa -pubout -in config/jwt/private.pem -passin pass:dd18c9fd60555b9c0ab434ebe78bdee6 -out config/jwt/public.pem', workdir='/home/app/application/backend')
+    else:
+        print("JWT keys already exist, skip")
 
 @task
 def builder(c, user="app"):
