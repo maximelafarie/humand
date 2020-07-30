@@ -61,8 +61,8 @@ def install(c):
     """
     Install the application (composer, yarn, ...)
     """
-    # with Builder(c):
-    #     docker_compose_run(c, 'composer install -n --prefer-dist --optimize-autoloader', no_deps=True)
+    with Builder(c):
+        docker_compose_run(c, 'composer install -n --prefer-dist --optimize-autoloader', no_deps=True, workdir='/home/app/application/backend')
     #     run_in_docker_or_locally_for_dinghy(c, 'yarn', no_deps=True)
 
 
