@@ -1,8 +1,8 @@
 /* eslint-disable no-return-assign */
 import { combineEpics, ofType } from 'redux-observable'
 import * as rx from 'rxjs/operators'
-import { catchObservableError } from '../Utils/ObservableUtils'
-import * as LogIn from '../Redux/State/LogIn'
+import { catchObservableError } from '../utils/observable-utils'
+import * as LogIn from '../redux/state/login.state'
 
 // login :: Epic -> Observable Action
 export const login = action$ =>

@@ -1,4 +1,4 @@
-import * as LogIn from '../../Redux/State/LogIn'
+import * as LogIn from '../../redux/state/login.state'
 
 describe('Redux :: State :: Auth :: LogIn', () => {
   it('reduces to initial state by default', () => {

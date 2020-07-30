@@ -1,5 +1,4 @@
 import { uncurryN, pipe } from 'ramda'
-
 import { configureStore } from '@reduxjs/toolkit'
 
 // Store :: State -> (Store -> Store) -> (Action -> State -> State) -> Store

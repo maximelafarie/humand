@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 import { createBrowserHistory } from 'history'
 import { createEpicMiddleware } from 'redux-observable'
 import { of } from 'ramda'
-import Store from './Redux/Store'
-import mainReducer from './Redux'
-import App from './Components/App'
-import rootEpic from './Epics'
+import Store from './redux/store'
+import mainReducer from './redux'
+import App from './components/app'
+import rootEpic from './epics'
 
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorker from './service-worker'
 
 const epicMiddleware = createEpicMiddleware({
   dependencies: {
