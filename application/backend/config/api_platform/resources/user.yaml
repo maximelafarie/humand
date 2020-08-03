@@ -1,3 +1,16 @@
 App\Entity\User:
-    collectionOperations: ~
+    collectionOperations:
+        get: ~
+        forget_password:
+            method: POST
+            path: /forget-password
+            controller: App\Controller\ForgetPasswordAction
+            normalization_context: { groups: [] }
+            read: false
+        reset_password:
+            method: POST
+            path: /reset-password/{token}
+            controller: App\Controller\ResetPasswordAction
+            read: false
+
     itemOperations: ~

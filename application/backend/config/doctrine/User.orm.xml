@@ -13,7 +13,8 @@
         <field name="lastName"/>
         <field name="email" unique="true"/>
         <field name="roles" type="json_array"/>
-        <field name="password"/>
+        <field name="password" nullable="true"/>
+        <field name="resetToken" nullable="true"/>
     </entity>
 
 </doctrine-mapping>

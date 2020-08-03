@@ -1,0 +1,3 @@
+user:
+    password:
+        not_blank: Le mot de passe est obligatoire
