@@ -4,10 +4,8 @@ import './login.scss'
 const LoginForm = ({ submitLogin, isLoading, error }) => (
   <div className="box columns is-centered">
     <div className="column is-12 has-text-centered">
-      <div className="main-title">
-        <div>
-          <h2>Mire de connexion Humand</h2>
-        </div>
+    <div className="main-title">
+        <div className="logo" />
       </div>
       <form id="login" onSubmit={submitLogin}>
         <div className="field">
