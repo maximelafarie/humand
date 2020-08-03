@@ -88,13 +88,14 @@ def migrate(c):
         docker_compose_run(c, 'php bin/console doctrine:migration:migrate -n --allow-no-migration', workdir='/home/app/application/backend')
         docker_compose_run(c, 'php bin/console hautelook:fixtures:load -n', workdir='/home/app/application/backend')
 
+
 @task
 def jwtKeys(c):
     """
     Jwt config
     """
     print(path.exists(c.root_dir + '/application/backend/config/jwt/private.pem'))
-    if path.exists(c.root_dir + '/application/backend/config/jwt/private.pem') == False:
+    if path.exists(c.root_dir + '/application/backend/config/jwt/private.pem') is False:
         print("JWT keys not exist, generate them")
         with Builder(c):
             docker_compose_run(c, 'mkdir -p config/jwt', workdir='/home/app/application/backend')
@@ -102,6 +103,7 @@ def jwtKeys(c):
             docker_compose_run(c, 'openssl rsa -pubout -in config/jwt/private.pem -passin pass:dd18c9fd60555b9c0ab434ebe78bdee6 -out config/jwt/public.pem', workdir='/home/app/application/backend')
     else:
         print("JWT keys already exist, skip")
+
 
 @task
 def builder(c, user="app"):
@@ -180,6 +182,7 @@ def destroy(c, force=False):
     with Builder(c):
         docker_compose(c, 'down --remove-orphans --volumes --rmi=local')
 
+
 @task
 def unitTests(c):
     """
@@ -187,6 +190,7 @@ def unitTests(c):
     """
     with Builder(c):
         docker_compose_run(c, 'php vendor/bin/simple-phpunit', no_deps=True, workdir='/home/app/application/backend')
+
 
 @task(default=True)
 def help(c):
