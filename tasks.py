@@ -180,6 +180,13 @@ def destroy(c, force=False):
     with Builder(c):
         docker_compose(c, 'down --remove-orphans --volumes --rmi=local')
 
+@task
+def unitTests(c):
+    """
+    Run unit tests
+    """
+    with Builder(c):
+        docker_compose_run(c, 'php vendor/bin/simple-phpunit', no_deps=True, workdir='/home/app/application/backend')
 
 @task(default=True)
 def help(c):
