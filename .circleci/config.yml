@@ -31,12 +31,12 @@ jobs:
                     set -e
                     ~/.local/bin/pipenv run inv start
                     sleep 5
-            # - run:
-            #     name: Test the infrastructure is working
-            #     command: |
-            #         set -e
-            #         set -o pipefail
-            #         curl --fail --insecure --silent -H "Host: humand.test" https://127.0.0.1 | grep "Hello world"
+            - run:
+                name: Unit tests
+                command: |
+                    set -e
+                    set -o pipefail
+                    ~/.local/bin/pipenv run inv unitTests
             - run:
                 name: Test communication with DB
                 command: |
