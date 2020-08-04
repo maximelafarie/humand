@@ -17,6 +17,7 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+            - '../src/Dictionary/'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -31,3 +32,19 @@ services:
         resource: '../src/EventSubscriber/Doctrine'
         tags:
             - { name: 'doctrine.event_subscriber' }
+
+
+    App\DataProvider\DictionaryDataProvider:
+        arguments:
+            - '@Knp\DictionaryBundle\Dictionary\Collection'
+        tags:
+            - { name: api_platform.collection_data_provider, priority: 2 }
+            - { name: api_platform.item_data_provider, priority: 2 }
+        autoconfigure: false
+
+    App\Serializer\DictionaryNormalizer:
+        tags:
+            - { name: serializer.normalizer, priority: 17 }
+
+imports:
+    - { resource: services/dictionary.yaml }

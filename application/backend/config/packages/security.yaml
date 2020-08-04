@@ -21,6 +21,10 @@ security:
             pattern:   ^/api/docs
             anonymous: ~
 
+        dictionaries:
+            pattern:   ^/api/dictionaries
+            anonymous: ~
+
         token:
             pattern:  ^/api/token
             stateless: true
@@ -70,4 +74,5 @@ security:
         - { path: ^/api/forget-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/dictionaries , roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
