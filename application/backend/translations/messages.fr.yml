@@ -1,0 +1,7 @@
+email:
+    forget_password:
+        action_text: Réinitialisation du mot de passe
+        subject: Mot de passe oublié
+        content:
+            hello: Bonjour
+            sentence_before_button: 'Suite à votre demande, nous vous invitons à réinitialiser votre mot de passe en cliquant sur le bouton suivant :'

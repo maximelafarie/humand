@@ -2,3 +2,8 @@ api_platform:
     resource: .
     type: api_platform
     prefix: /api
+
+
+_api:
+    resource: ../api_platform/routes/api.yaml
+    prefix:   /api

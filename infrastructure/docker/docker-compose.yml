@@ -65,3 +65,12 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.${PROJECT_NAME}-phpmyadmin.rule=Host(`pma.${PROJECT_ROOT_DOMAIN}`)"
+
+    maildev:
+        image: djfarrelly/maildev
+        command: ["bin/maildev", "--web", "80", "--smtp", "25", "--hide-extensions", "STARTTLS"]
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.${PROJECT_NAME}-maildev.rule=Host(`maildev.${PROJECT_ROOT_DOMAIN}`)"
+            - "traefik.http.routers.${PROJECT_NAME}-maildev.tls=true"
+            - "traefik.http.services.maildev.loadbalancer.server.port=80"

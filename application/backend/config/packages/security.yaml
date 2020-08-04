@@ -31,6 +31,24 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
+        forget_password:
+            pattern: ^/api/forget-password
+            provider: app_user_provider
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\Authenticator\EmailAuthenticator
+
+        reset_password:
+            pattern: ^/api/reset-password
+            provider: app_user_provider
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\Authenticator\TokenAuthenticator
+
         main:
             pattern:   ^/api
             stateless: true
@@ -49,5 +67,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/forget-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
