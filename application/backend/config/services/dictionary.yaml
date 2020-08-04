@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: false
+
+    App\Dictionary\:
+        resource: '../../src/Dictionary/*'
+        exclude: '../../src/Dictionary/Dictionary/*'
+        tags:
+            - { name: knp_dictionary.dictionary }

@@ -1,0 +1,18 @@
+App\Dictionary\Dictionary\SimpleDictionary:
+    attributes:
+        pagination_enabled: false
+    itemOperations:
+        get:
+            method: 'GET'
+            path: /dictionaries/{id}
+            swagger_context:
+                summary: Return a dictionary
+    collectionOperations:
+        get:
+            method: 'GET'
+            path: /dictionaries
+    properties:
+        name:
+            description: name of the dictionary
+            identifier: true
+
