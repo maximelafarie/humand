@@ -13,20 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ResetPasswordAction extends AbstractController
 {
-    /**
-     * @var JWTTokenManagerInterface
-     */
-    private $JWTManager;
-
-    /**
-     * @var ValidatorInterface
-     */
-    private $validator;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private JWTTokenManagerInterface $JWTManager;
+    private ValidatorInterface $validator;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(
         JWTTokenManagerInterface $JWTManager,
@@ -51,7 +40,7 @@ class ResetPasswordAction extends AbstractController
         $user->setPassword(null);
         $user->setPlainPassword($parameters->password);
 
-        $user->setResetToken(null);
+        $user->setConfirmationToken(null);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

@@ -1,7 +1,13 @@
 email:
+    content:
+        hello: Bonjour
     forget_password:
         action_text: Réinitialisation du mot de passe
         subject: Mot de passe oublié
         content:
-            hello: Bonjour
             sentence_before_button: 'Suite à votre demande, nous vous invitons à réinitialiser votre mot de passe en cliquant sur le bouton suivant :'
+    activate-account:
+        action_text: Activer votre compte
+        subject: Activer votre compte
+        content:
+            sentence_before_button: 'Pour finaliser l’installation de votre compte et commencer à utiliser Humand, vous devez renseigner un mot de passe de connexion en cliquant sur le bouton suivant :'

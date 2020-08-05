@@ -32,7 +32,7 @@
                 {% block action %}
                     {% if action_url %}
                         <spacer size="16"></spacer>
-                        <button href="{{ url_site }}{{ action_url }}/{{ user.resetToken|url_encode }}">{{ action_text }}</button>
+                        <button href="{{ url_site }}{{ action_url }}">{{ action_text }}</button>
                     {% endif %}
                 {% endblock %}
             </columns>

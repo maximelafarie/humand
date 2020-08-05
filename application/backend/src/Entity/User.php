@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\Timestampable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -15,46 +16,24 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
-    /**
-     * @var UuidInterface
-     */
-    private $id;
+    use Timestampable;
+
+    private UuidInterface $id;
+    private string $firstName;
+    private string $lastName;
+    private string $email;
+    private array $roles = [];
+    private ?string $plainPassword = null;
 
     /**
-     * @var string
-     */
-    private $firstName;
-
-    /**
-     * @var string
-     */
-    private $lastName;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var array
-     */
-    private $roles = [];
-
-    /**
-     * @var string|null
-     */
-    private $plainPassword;
-
-    /**
-     * @var string|null The hashed password
      * @Assert\NotBlank(message="user.password.not_blank", groups={"reset_password"})
      */
-    private $password;
+    private ?string $password = null;
 
     /**
-     * @var string|null
+     * Token use for token authenticator, Create
      */
-    private $resetToken;
+    private ?string $confirmationToken = null;
 
     public function __construct()
     {
@@ -71,11 +50,9 @@ class User implements UserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -100,11 +77,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(array $roles): void
     {
         $this->roles = $roles;
-
-        return $this;
     }
 
     /**
@@ -112,14 +87,13 @@ class User implements UserInterface
      */
     public function getPassword(): ?string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
-    public function setPassword(?string $password = null): self
+    public function setPassword(?string $password = null): void
     {
         $this->password = $password;
 
-        return $this;
     }
 
     /**
@@ -190,17 +164,17 @@ class User implements UserInterface
     /**
      * @return string|null
      */
-    public function getResetToken(): ?string
+    public function getConfirmationToken(): ?string
     {
-        return $this->resetToken;
+        return $this->confirmationToken;
     }
 
     /**
-     * @param string|null $resetToken
+     * @param string|null $confirmationToken
      */
-    public function setResetToken(?string $resetToken): void
+    public function setConfirmationToken(?string $confirmationToken): void
     {
-        $this->resetToken = $resetToken;
+        $this->confirmationToken = $confirmationToken;
     }
 
     public function fullName()

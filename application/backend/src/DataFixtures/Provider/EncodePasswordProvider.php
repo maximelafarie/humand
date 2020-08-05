@@ -14,10 +14,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class EncodePasswordProvider extends BaseProvider
 {
-    /**
-     * @var UserPasswordEncoderInterface
-     */
-    private $passwordEncoder;
+    private UserPasswordEncoderInterface $passwordEncoder;
 
     public function __construct(Generator $generator, UserPasswordEncoderInterface $passwordEncoder)
     {

@@ -16,9 +16,6 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
 class TokenAuthenticator extends AbstractGuardAuthenticator
 {
-    /**
-     * @var \App\Repository\UserRepository
-     */
     protected $userRepository;
 
     public function __construct(UserRepository $userRepository)
@@ -37,7 +34,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        return $this->userRepository->findOneByResetToken($credentials['token']);
+        return $this->userRepository->findOneBy(['confirmationToken' => $credentials['token']]);
     }
 
     public function checkCredentials($credentials, UserInterface $user)

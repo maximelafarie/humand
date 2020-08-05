@@ -9,12 +9,9 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
-class HashPasswordListener implements EventSubscriber
+class HashPasswordSubscriber implements EventSubscriber
 {
-    /**
-     * @var EncoderFactoryInterface
-     */
-    private $encoderFactory;
+    private EncoderFactoryInterface $encoderFactory;
 
     public function __construct(EncoderFactoryInterface $encoderFactory)
     {
@@ -34,9 +31,10 @@ class HashPasswordListener implements EventSubscriber
      *
      * @param LifecycleEventArgs $args
      */
-    public function prePersist(LifecycleEventArgs $args): void
+    public function prePersist(LifecycleEventArgs $args)
     {
-        $entity = $args->getEntity();
+        $entity = $args->getObject();
+
         if (!$entity instanceof User) {
             return;
         }
@@ -49,9 +47,9 @@ class HashPasswordListener implements EventSubscriber
      *
      * @param LifecycleEventArgs $args
      */
-    public function preUpdate(LifecycleEventArgs $args): void
+    public function preUpdate(LifecycleEventArgs $args)
     {
-        $entity = $args->getEntity();
+        $entity = $args->getObject();
 
         if (!$entity instanceof User) {
             return;
@@ -61,23 +59,23 @@ class HashPasswordListener implements EventSubscriber
     }
 
     /**
-     * @param User $entity
+     * @param User $user
      */
-    private function encodePassword(User $entity)
+    private function encodePassword(User $user)
     {
         // No password to encode
-        if (\is_null($entity->getPlainPassword())) {
+        if (\is_null($user->getPlainPassword())) {
             return;
         }
 
-        $encoder = $this->encoderFactory->getEncoder($entity);
+        $encoder = $this->encoderFactory->getEncoder($user);
 
         $encoded = $encoder->encodePassword(
-            $entity->getPlainPassword(),
-            $entity->getSalt()
+            $user->getPlainPassword(),
+            $user->getSalt()
         );
 
-        $entity->setPassword($encoded);
-        $entity->eraseCredentials();
+        $user->setPassword($encoded);
+        $user->eraseCredentials();
     }
 }

@@ -52,14 +52,4 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
-
-    public function findOneByResetToken(string $resetToken): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.resetToken = :resetToken')
-            ->setParameter('resetToken', $resetToken)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
 }

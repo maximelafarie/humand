@@ -1,6 +1,13 @@
 App\Entity\User:
+    attributes:
+        denormalization_context:
+            groups: ['user_write']
+        normalization_context:
+            groups: ['user_read']
+
     collectionOperations:
         get: ~
+        post: ~
         forget_password:
             method: POST
             path: /forget-password

@@ -8,10 +8,7 @@ use Symfony\Component\Mailer\MailerInterface;
 
 abstract class AbstractMailer
 {
-    /**
-     * @var MailerInterface
-     */
-    protected $mailer;
+    protected MailerInterface $mailer;
 
     public function __construct(MailerInterface $mailer)
     {

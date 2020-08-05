@@ -10,15 +10,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ForgetPasswordAction extends AbstractController
 {
-    /**
-     * @var RandomTokenGenerator
-     */
-    private $tokenGenerator;
-
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $eventDispatcher;
+    private RandomTokenGenerator $tokenGenerator;
+    private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(RandomTokenGenerator $tokenGenerator, EventDispatcherInterface $eventDispatcher)
     {
@@ -29,9 +22,9 @@ class ForgetPasswordAction extends AbstractController
     public function __invoke()
     {
         $user       = $this->getUser();
-        $resetToken = $this->tokenGenerator->generateToken();
+        $token = $this->tokenGenerator->generateToken();
 
-        $user->setResetToken($resetToken);
+        $user->setConfirmationToken($token);
 
         $event = new UserEvent($user);
         $this->eventDispatcher->dispatch($event, UserEvent::RESET_TOKEN);

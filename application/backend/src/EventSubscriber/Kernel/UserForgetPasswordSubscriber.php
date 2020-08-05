@@ -8,12 +8,9 @@ use App\Event\UserEvent;
 use App\Mail\ForgetPasswordMail;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class UserResetTokenSubscriber implements EventSubscriberInterface
+class UserForgetPasswordSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var ForgetPasswordMail
-     */
-    private $forgetPasswordMail;
+    private ForgetPasswordMail $forgetPasswordMail;
 
     public function __construct(ForgetPasswordMail $forgetPasswordMail)
     {
