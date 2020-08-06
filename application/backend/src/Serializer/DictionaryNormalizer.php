@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Serializer;
 
 use Knp\DictionaryBundle\Dictionary;
@@ -11,7 +13,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class DictionaryNormalizer implements NormalizerInterface
 {
-
     public function normalize($object, string $format = null, array $context = array())
     {
         $dictionary = [];

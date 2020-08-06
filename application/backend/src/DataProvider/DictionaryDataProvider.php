@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\DataProvider;
 
@@ -10,10 +11,7 @@ use Knp\DictionaryBundle\Dictionary\Collection;
 
 class DictionaryDataProvider implements CollectionDataProviderInterface, ItemDataProviderInterface, RestrictedDataProviderInterface
 {
-    /**
-     * @var Collection
-     */
-    private $collection;
+    private Collection $collection;
 
     public function __construct($collection)
     {

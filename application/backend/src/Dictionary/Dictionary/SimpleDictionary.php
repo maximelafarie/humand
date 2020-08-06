@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\Dictionary\Dictionary;
 
@@ -11,16 +11,8 @@ use Traversable;
 
 class SimpleDictionary implements Dictionary
 {
-
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var array
-     */
-    private $values;
+    private string $name;
+    private array $values;
 
     public function __construct(string $name, array $values)
     {
