@@ -46,5 +46,10 @@ services:
         tags:
             - { name: serializer.normalizer, priority: 17 }
 
+    App\Swagger\SwaggerDecorator:
+        decorates: 'api_platform.swagger.normalizer.documentation'
+        arguments: ['@App\Swagger\SwaggerDecorator.inner']
+        autoconfigure: false
+
 imports:
     - { resource: services/dictionary.yaml }
