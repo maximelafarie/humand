@@ -51,7 +51,7 @@ def start(c):
     up(c)
     cache_clear(c)
     install(c)
-    migrate(c)
+    installDb(c)
     jwtKeys(c)
     start_workers(c)
 
@@ -87,6 +87,16 @@ def migrate(c):
         docker_compose_run(c, 'php bin/console doctrine:database:create --if-not-exists', workdir='/home/app/application/backend')
         docker_compose_run(c, 'php bin/console doctrine:migration:migrate -n --allow-no-migration', workdir='/home/app/application/backend')
         docker_compose_run(c, 'php bin/console hautelook:fixtures:load -n', workdir='/home/app/application/backend')
+
+
+@task
+def installDb(c):
+    """
+    Reset & install database
+    """
+    with Builder(c):
+        docker_compose_run(c, 'php bin/console doctrine:database:drop --force', workdir='/home/app/application/backend')
+        migrate(c)
 
 
 @task
