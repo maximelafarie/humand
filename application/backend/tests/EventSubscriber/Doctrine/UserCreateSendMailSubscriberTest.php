@@ -5,7 +5,7 @@ namespace App\Tests\EventSubscriber\Doctrine;
 
 use App\Entity\User;
 use App\EventSubscriber\Doctrine\UserCreateSendMailSubscriber;
-use App\Mail\RegisterPasswordMail;
+use App\Mail\RegisterPasswordMailer;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -15,20 +15,17 @@ use Prophecy\Prophecy\ObjectProphecy;
 class UserCreateSendMailSubscriberTest extends TestCase
 {
     /**
-     * @var RegisterPasswordMail|ObjectProphecy
+     * @var RegisterPasswordMailer|ObjectProphecy
      */
-    private $registerPasswordMail;
+    private $registerPasswordMailer;
 
-    /**
-     * @var UserCreateSendMailSubscriber
-     */
-    private $sub;
+    private UserCreateSendMailSubscriber $sub;
 
     public function setUp()
     {
-        $this->registerPasswordMail = $this->prophesize(RegisterPasswordMail::class);
+        $this->registerPasswordMailer = $this->prophesize(RegisterPasswordMailer::class);
 
-        $this->sub = new UserCreateSendMailSubscriber($this->registerPasswordMail->reveal());
+        $this->sub = new UserCreateSendMailSubscriber($this->registerPasswordMailer->reveal());
     }
 
     public function testItIsAnDoctrineEventSubscriberInterface()
@@ -57,7 +54,7 @@ class UserCreateSendMailSubscriberTest extends TestCase
         $this->assertNull($this->sub->postPersist($event->reveal()));
 
         $user->getConfirmationToken()->shouldBeCalled()->willReturn('foo');
-        $this->registerPasswordMail->send(['user' => $user])->shouldBeCalled();
+        $this->registerPasswordMailer->send(['user' => $user])->shouldBeCalled();
 
         $this->sub->postPersist($event->reveal());
     }

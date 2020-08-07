@@ -22,10 +22,7 @@ class TokenAuthenticatorTest extends TestCase
      */
     private $userRepository;
 
-    /**
-     * @var TokenAuthenticator
-     */
-    private $authenticator;
+    private TokenAuthenticator $authenticator;
 
     protected function setUp()
     {

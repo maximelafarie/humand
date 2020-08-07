@@ -6,7 +6,7 @@ email:
         subject: Mot de passe oublié
         content:
             sentence_before_button: 'Suite à votre demande, nous vous invitons à réinitialiser votre mot de passe en cliquant sur le bouton suivant :'
-    activate-account:
+    activate_account:
         action_text: Activer votre compte
         subject: Activer votre compte
         content:

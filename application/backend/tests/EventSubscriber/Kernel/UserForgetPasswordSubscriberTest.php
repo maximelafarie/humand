@@ -6,7 +6,7 @@ namespace App\Tests\EventSubscriber\Kernel;
 use App\Entity\User;
 use App\Event\UserEvent;
 use App\EventSubscriber\Kernel\UserForgetPasswordSubscriber;
-use App\Mail\ForgetPasswordMail;
+use App\Mail\ForgetPasswordMailer;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -14,20 +14,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class UserForgetPasswordSubscriberTest extends TestCase
 {
     /**
-     * @var ForgetPasswordMail|ObjectProphecy
+     * @var ForgetPasswordMailer|ObjectProphecy
      */
-    private $forgetPasswordMail;
+    private $forgetPasswordMailer;
 
-    /**
-     * @var UserForgetPasswordSubscriber
-     */
-    private $sub;
+    private UserForgetPasswordSubscriber $sub;
 
     public function setUp()
     {
-        $this->forgetPasswordMail = $this->prophesize(ForgetPasswordMail::class);
+        $this->forgetPasswordMailer = $this->prophesize(ForgetPasswordMailer::class);
 
-        $this->sub = new UserForgetPasswordSubscriber($this->forgetPasswordMail->reveal());
+        $this->sub = new UserForgetPasswordSubscriber($this->forgetPasswordMailer->reveal());
     }
 
     public function testItIsAnEventSubscriberInterface()
@@ -48,7 +45,7 @@ class UserForgetPasswordSubscriberTest extends TestCase
     public function testItSendEmail()
     {
         $user = new User();
-        $this->forgetPasswordMail->send(['user' => $user])->shouldBeCalled();
+        $this->forgetPasswordMailer->send(['user' => $user])->shouldBeCalled();
 
         $this->sub->sendEmail(new UserEvent($user));
     }

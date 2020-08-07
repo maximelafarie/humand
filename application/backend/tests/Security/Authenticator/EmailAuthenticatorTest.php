@@ -15,10 +15,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class EmailAuthenticatorTest extends TestCase
 {
-    /**
-     * @var EmailAuthenticator
-     */
-    private $authenticator;
+    private EmailAuthenticator $authenticator;
 
     protected function setUp()
     {
