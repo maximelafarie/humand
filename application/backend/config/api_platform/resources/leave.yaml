@@ -1,0 +1,7 @@
+App\Entity\Leave:
+    normalization_context:
+        groups: ['leave_read']
+
+    itemOperations:
+        get: ~
+        delete: ~

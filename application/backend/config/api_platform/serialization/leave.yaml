@@ -1,0 +1,16 @@
+App\Entity\Leave:
+    attributes:
+        id: &read
+            groups: ['leave_read']
+        leaveType: &readWrite
+            groups: ['leave_read', 'leave_write']
+        date:
+            <<: *readWrite
+        accepted:
+            <<: *readWrite
+        concernedUser:
+            <<: *readWrite
+        author:
+            <<: *read
+        createdAt:
+            <<: *read

@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Serializer\DictionaryNormalizer:
+        tags:
+            - { name: serializer.normalizer, priority: 17 }
+
+    App\Serializer\LeaveDenormalizer:
+        arguments:
+            $denormalizer: '@api_platform.jsonld.normalizer.item'
+        tags:
+            - { name: serializer.normalizer, priority: 17 }

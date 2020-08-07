@@ -19,6 +19,7 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
             - '../src/Dictionary/'
+            - '../src/Serializer/'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -43,10 +44,6 @@ services:
             - { name: api_platform.item_data_provider, priority: 2 }
         autoconfigure: false
 
-    App\Serializer\DictionaryNormalizer:
-        tags:
-            - { name: serializer.normalizer, priority: 17 }
-
     App\Swagger\SwaggerDecorator:
         decorates: 'api_platform.swagger.normalizer.documentation'
         arguments: ['@App\Swagger\SwaggerDecorator.inner']
@@ -54,3 +51,4 @@ services:
 
 imports:
     - { resource: services/dictionary.yaml }
+    - { resource: services/serializer.yaml }
