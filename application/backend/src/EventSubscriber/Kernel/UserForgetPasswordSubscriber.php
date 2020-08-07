@@ -5,16 +5,16 @@ namespace App\EventSubscriber\Kernel;
 
 use App\Entity\User;
 use App\Event\UserEvent;
-use App\Mail\ForgetPasswordMail;
+use App\Mail\ForgetPasswordMailer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class UserForgetPasswordSubscriber implements EventSubscriberInterface
 {
-    private ForgetPasswordMail $forgetPasswordMail;
+    private ForgetPasswordMailer $forgetPasswordMailer;
 
-    public function __construct(ForgetPasswordMail $forgetPasswordMail)
+    public function __construct(ForgetPasswordMailer $forgetPasswordMailer)
     {
-        $this->forgetPasswordMail = $forgetPasswordMail;
+        $this->forgetPasswordMailer = $forgetPasswordMailer;
     }
 
     public static function getSubscribedEvents()
@@ -39,7 +39,7 @@ class UserForgetPasswordSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $this->forgetPasswordMail->send([
+        $this->forgetPasswordMailer->send([
             'user' => $user,
         ]);
     }

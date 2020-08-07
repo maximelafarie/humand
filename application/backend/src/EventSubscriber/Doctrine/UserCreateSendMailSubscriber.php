@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace App\EventSubscriber\Doctrine;
 
 use App\Entity\User;
-use App\Mail\RegisterPasswordMail;
+use App\Mail\RegisterPasswordMailer;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 
 class UserCreateSendMailSubscriber implements EventSubscriber
 {
-    private RegisterPasswordMail $registerPasswordMail;
+    private RegisterPasswordMailer $registerPasswordMailer;
 
-    public function __construct(RegisterPasswordMail $registerPasswordMail)
+    public function __construct(RegisterPasswordMailer $registerPasswordMailer)
     {
-        $this->registerPasswordMail = $registerPasswordMail;
+        $this->registerPasswordMailer = $registerPasswordMailer;
     }
 
     public function getSubscribedEvents()
@@ -37,7 +37,7 @@ class UserCreateSendMailSubscriber implements EventSubscriber
             return;
         }
 
-        $this->registerPasswordMail->send([
+        $this->registerPasswordMailer->send([
             'user' => $user,
         ]);
     }

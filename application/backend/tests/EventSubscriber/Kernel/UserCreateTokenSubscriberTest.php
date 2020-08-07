@@ -22,10 +22,7 @@ class UserCreateTokenSubscriberTest extends TestCase
      */
     private $generator;
 
-    /**
-     * @var UserCreateTokenSubscriber
-     */
-    private $sub;
+    private UserCreateTokenSubscriber $sub;
 
     public function setUp()
     {

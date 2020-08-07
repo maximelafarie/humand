@@ -16,10 +16,7 @@ class SwaggerDecoratorTest extends TestCase
      */
     private $normalizer;
 
-    /**
-     * @var SwaggerDecorator
-     */
-    private $swagger;
+    private SwaggerDecorator $swagger;
 
     public function setUp()
     {
