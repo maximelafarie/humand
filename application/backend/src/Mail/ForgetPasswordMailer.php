@@ -9,16 +9,16 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class RegisterPasswordMail extends AbstractMailer
+class ForgetPasswordMailer extends AbstractMailer
 {
-    private string $activateFrontRouting;
+    private string $resetFrontRouting;
     private TranslatorInterface $translator;
 
-    public function __construct(MailerInterface $mailer, TranslatorInterface $translator, string $activateFrontRouting)
+    public function __construct(MailerInterface $mailer, TranslatorInterface $translator, string $resetFrontRouting)
     {
         parent::__construct($mailer);
         $this->translator = $translator;
-        $this->activateFrontRouting = $activateFrontRouting;
+        $this->resetFrontRouting = $resetFrontRouting;
     }
 
     public function create(array $parameters = [])
@@ -31,13 +31,13 @@ class RegisterPasswordMail extends AbstractMailer
         }
 
         return (new TemplatedEmail())
-            ->subject($this->translator->trans('email.activate-account.subject'))
-            ->htmlTemplate('emails/activate-account.html.twig')
+            ->subject($this->translator->trans('email.forget_password.subject'))
+            ->htmlTemplate('emails/forget-password.html.twig')
             ->from('admin@humand.test')
             ->to($user->getEmail())
             ->context([
-                'action_url'  => $this->activateFrontRouting.'/'.$user->getConfirmationToken(),
-                'action_text' => $this->translator->trans('email.activate-account.action_text'),
+                'action_url'  => $this->resetFrontRouting.'/'.$user->getConfirmationToken(),
+                'action_text' => $this->translator->trans('email.forget_password.action_text'),
                 'user'        => $user,
             ])
         ;

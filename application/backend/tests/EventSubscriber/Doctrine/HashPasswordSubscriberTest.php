@@ -21,10 +21,7 @@ class HashPasswordSubscriberTest extends TestCase
      */
     private $encoderFactory;
 
-    /**
-     * @var HashPasswordSubscriber
-     */
-    private $sub;
+    private HashPasswordSubscriber $sub;
 
     public function setUp()
     {
