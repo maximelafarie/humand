@@ -2,13 +2,13 @@ App\Entity\User:
     attributes:
         id:
             groups: ['user_read']
-        firstName:
+        firstName: &readWrite
             groups: ['user_read', 'user_write']
         lastName:
-            groups: ['user_read', 'user_write']
+            <<: *readWrite
         email:
-            groups: ['user_read', 'user_write']
+            <<: *readWrite
         roles:
-            groups: ['user_read', 'user_write']
+            <<: *readWrite
         token:
             groups: ['user_token']
