@@ -5,3 +5,11 @@ App\Entity\Leave:
     itemOperations:
         get: ~
         delete: ~
+
+    collectionOperations:
+        get: ~
+        post:
+            method: POST
+            controller: App\Controller\CreateLeavesAction
+            normalization_context:
+                groups: ['multi_leave']
