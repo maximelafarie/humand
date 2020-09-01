@@ -1,0 +1,8 @@
+api_public_holidays:
+  path: '/public-holidays/{year}'
+  methods: [ 'GET' ]
+  controller: 'App\Controller\PublicHolidaysAction'
+  requirements:
+    year: '\d+'
+
+

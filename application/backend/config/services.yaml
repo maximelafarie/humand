@@ -8,6 +8,7 @@ services:
         bind:
             $activateFrontRouting: '%env(FRONT_ROUTING_ACTIVATE)%'
             $resetFrontRouting: '%env(FRONT_ROUTING_FORGET_PASSWORD)%'
+            $country: '%env(APP_PUBLIC_HOLIDAY_COUNTRY)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

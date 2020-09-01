@@ -1,2 +1,5 @@
 _authentication:
   resource: authentication.yaml
+
+_public-holidays:
+  resource: public-holidays.yaml
