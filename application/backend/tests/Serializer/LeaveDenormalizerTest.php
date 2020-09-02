@@ -66,8 +66,11 @@ class LeaveDenormalizerTest extends TestCase
     public function testItAddAuthorToData()
     {
         $user = new User();
+        $context = ['collection_operation_name' => 'post'];
         $this->security->getUser()->shouldBeCalled()->willReturn($user);
         $this->iriConverter->getIriFromItem($user)->shouldBeCalled();
-        $this->denormalizer->denormalize([], Leave::class);
+        $this->denormalizer->denormalize(['leavesArray' => [['foo' => 'bar']]], Leave::class, null, $context);
+
+        $this->normalizer->denormalize(['foo' => 'bar', 'author' => ''], Leave::class, null, $context)->shouldBeCalled();
     }
 }

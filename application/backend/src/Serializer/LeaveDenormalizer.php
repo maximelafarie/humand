@@ -3,12 +3,14 @@
 namespace App\Serializer;
 
 use ApiPlatform\Core\Api\IriConverterInterface;
+use ApiPlatform\Core\Api\OperationType;
 use App\Entity\Leave;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class LeaveDenormalizer implements DenormalizerInterface
 {
+
     private IriConverterInterface $iriConverter;
     private Security $security;
     private DenormalizerInterface $normalizer;
@@ -22,9 +24,16 @@ class LeaveDenormalizer implements DenormalizerInterface
     
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        $data['author'] = $this->iriConverter->getIriFromItem($this->security->getUser());
+        $userIri = $this->iriConverter->getIriFromItem($this->security->getUser());
+        if ($context['collection_operation_name'] === 'post') {
+            $array = [];
+            foreach ($data['leavesArray'] as $leaveArray) {
+                $leaveArray['author'] = $userIri;
+                $array[] = $this->normalizer->denormalize($leaveArray, $type, $format, $context);
+            }
+        }
 
-        return $this->normalizer->denormalize($data, $type, $format, $context);
+        return $array;
     }
 
     public function supportsDenormalization($data, string $type, string $format = null)
