@@ -38,5 +38,6 @@ class SwaggerDecoratorTest extends TestCase
 
         $this->assertArrayHasKey('paths', $result);
         $this->assertArrayHasKey('/api/token', $result['paths']);
+        $this->assertArrayHasKey('/api/public-holidays/{id}', $result['paths']);
     }
 }

@@ -38,11 +38,11 @@ final class SwaggerDecorator implements NormalizerInterface
             ],
         ];
 
-        $tokenDocumentation = [
+        $otherDocumentation = [
             'paths' => [
                 '/api/token' => [
                     'get' => [
-                        'tags' => ['User'],
+                        'tags' => ['Other'],
                         'operationId' => 'postCredentialsItem',
                         'summary' => 'Get JWT token to login.',
                         'requestBody' => [
@@ -69,9 +69,30 @@ final class SwaggerDecorator implements NormalizerInterface
                         ],
                     ],
                 ],
+                '/api/public-holidays/{id}' => [
+                    'get' => [
+                        'tags' => ['Other'],
+                        'summary' => 'Get public holidays for given year',
+                        'parameters' => [
+                            [
+                                'name' => 'id',
+                                'in' => 'path',
+                                'required' => true,
+                                "schema" =>  [
+                                  "type" => "string"
+                                ],
+                            ]
+                        ],
+                        'responses' => [
+                            Response::HTTP_OK => [
+                                'description' => 'Get public holidays for given year',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 
-        return array_merge_recursive($docs, $tokenDocumentation);
+        return array_merge_recursive($docs, $otherDocumentation);
     }
 }
