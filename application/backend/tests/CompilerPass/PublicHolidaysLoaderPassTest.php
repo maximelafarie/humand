@@ -23,7 +23,7 @@ class PublicHolidaysLoaderPassTest extends TestCase
     public function testItCallMethodAdd()
     {
         $definition = $this->prophesize(Definition::class);
-        $definition->addMethodCall('addFilter', array(new Reference('foo_bar')));
+        $definition->addMethodCall('addFilter', [new Reference('foo_bar')]);
 
         $container = $this->prophesize(ContainerBuilder::class);
         $container->has(PublicHolidaysRegistry::class)->shouldBeCalled()->willReturn(true);
@@ -35,5 +35,4 @@ class PublicHolidaysLoaderPassTest extends TestCase
 
         (new PublicHolidaysLoaderPass())->process($container->reveal());
     }
-
 }

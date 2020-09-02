@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security\Authenticator;
@@ -75,8 +76,6 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     }
 
     /**
-     * @param Request $request
-     *
      * @return bool
      */
     private function isAllowedRequest(Request $request)

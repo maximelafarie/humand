@@ -15,7 +15,7 @@ class PublicHolidaysRegistry implements \ArrayAccess, \IteratorAggregate, \Count
 
     /**
      * @param string $country
-     * @param AbstractPublicHolidays $publicHolidays
+     *
      * @return PublicHolidaysRegistry
      */
     public function add(AbstractPublicHolidays $publicHolidays)
@@ -26,18 +26,12 @@ class PublicHolidaysRegistry implements \ArrayAccess, \IteratorAggregate, \Count
     }
 
     /**
-     * @param string     $country
-     * @param AbstractPublicHolidays $publicHolidays
-     *
      * @return PublicHolidaysRegistry
      */
     public function set(string $country, AbstractPublicHolidays $publicHolidays)
     {
         if (isset($this->publicHolidays[$country])) {
-            throw new \RuntimeException(sprintf(
-                'The key "%s" already exists in the public holidays registry',
-                $country
-            ));
+            throw new \RuntimeException(\sprintf('The key "%s" already exists in the public holidays registry', $country));
         }
 
         $this->publicHolidays[$country] = $publicHolidays;
@@ -46,8 +40,7 @@ class PublicHolidaysRegistry implements \ArrayAccess, \IteratorAggregate, \Count
     }
 
     /**
-     * @param mixed  $offset
-     * @param string $country
+     * @param mixed $offset
      *
      * @return AbstractPublicHolidays
      */
@@ -69,30 +62,20 @@ class PublicHolidaysRegistry implements \ArrayAccess, \IteratorAggregate, \Count
     public function offsetGet($offset)
     {
         if (false === $this->offsetExists($offset)) {
-            throw new PublicHolidaysNotFoundException(sprintf(
-                'The public holidays "%s" has not been found in the registry. Known countries are: "%s".',
-                $offset['country'],
-                implode('", "', array_keys($this->publicHolidays))
-            ));
+            throw new PublicHolidaysNotFoundException(\sprintf('The public holidays "%s" has not been found in the registry. Known countries are: "%s".', $offset['country'], \implode('", "', \array_keys($this->publicHolidays))));
         }
 
         return $this->publicHolidays[$offset['country']];
-
     }
 
     public function offsetSet($offset, $value)
     {
-        throw new \RuntimeException(
-            "Use App\PublicHolidaysService\PublicHolidaysRegistry::set instead."
-        );
+        throw new \RuntimeException("Use App\PublicHolidaysService\PublicHolidaysRegistry::set instead.");
     }
 
     public function offsetUnset($offset)
     {
-        throw new \RuntimeException(
-            "You can't destroy public holidays."
-        );
-
+        throw new \RuntimeException("You can't destroy public holidays.");
     }
 
     public function count()

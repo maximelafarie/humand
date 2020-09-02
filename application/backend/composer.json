@@ -35,6 +35,7 @@
         "twig/inky-extra": "^3.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
         "hautelook/alice-bundle": "^2.7",
         "symfony/browser-kit": "^5.1",
         "symfony/css-selector": "^5.1",

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\EventSubscriber\Doctrine;
@@ -58,5 +59,4 @@ class UserCreateSendMailSubscriberTest extends TestCase
 
         $this->sub->postPersist($event->reveal());
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Security\Authenticator;
@@ -27,14 +28,14 @@ class TokenAuthenticatorTest extends TestCase
     protected function setUp()
     {
         $this->userRepository = $this->prophesize(UserRepository::class);
-        $this->authenticator  = new TokenAuthenticator($this->userRepository->reveal());
+        $this->authenticator = new TokenAuthenticator($this->userRepository->reveal());
     }
 
     public function testGetCredentialsFailedWithoutToken()
     {
         $this->expectException(PreconditionFailedHttpException::class);
 
-        $request     = new Request([], [], [], [], [], [], null);
+        $request = new Request([], [], [], [], [], [], null);
         $credentials = $this->authenticator->getCredentials($request);
 
         $this->assertNull($credentials);
@@ -42,8 +43,8 @@ class TokenAuthenticatorTest extends TestCase
 
     public function testGetCredentialsSuccess()
     {
-        $attributes  = ['token' => 'foobar'];
-        $request     = new Request([], [], $attributes, [], [], [], null);
+        $attributes = ['token' => 'foobar'];
+        $request = new Request([], [], $attributes, [], [], [], null);
         $credentials = $this->authenticator->getCredentials($request);
 
         $this->assertSame($credentials, [
@@ -66,7 +67,7 @@ class TokenAuthenticatorTest extends TestCase
     public function testCheckCredentials()
     {
         $credentials = [];
-        $user        = $this->prophesize(UserInterface::class);
+        $user = $this->prophesize(UserInterface::class);
 
         $result = $this->authenticator->checkCredentials($credentials, $user->reveal());
         $this->assertTrue($result);
@@ -106,24 +107,24 @@ class TokenAuthenticatorTest extends TestCase
 
     public function testSupports()
     {
-        $server  = ['REQUEST_URI' => 'reset-password', 'REQUEST_METHOD' => 'POST'];
+        $server = ['REQUEST_URI' => 'reset-password', 'REQUEST_METHOD' => 'POST'];
         $request = new Request([], [], [], [], [], $server, null);
-        $result  = $this->authenticator->supports($request);
+        $result = $this->authenticator->supports($request);
         $this->assertTrue($result);
 
-        $server  = ['REQUEST_URI' => 'reset-password/token', 'REQUEST_METHOD' => 'POST'];
+        $server = ['REQUEST_URI' => 'reset-password/token', 'REQUEST_METHOD' => 'POST'];
         $request = new Request([], [], [], [], [], $server, null);
-        $result  = $this->authenticator->supports($request);
+        $result = $this->authenticator->supports($request);
         $this->assertTrue($result);
 
-        $server  = ['REQUEST_URI' => 'forget-password', 'REQUEST_METHOD' => 'PUT'];
+        $server = ['REQUEST_URI' => 'forget-password', 'REQUEST_METHOD' => 'PUT'];
         $request = new Request([], [], [], [], [], $server, null);
-        $result  = $this->authenticator->supports($request);
+        $result = $this->authenticator->supports($request);
         $this->assertFalse($result);
 
-        $server  = ['REQUEST_URI' => 'bad-request', 'REQUEST_METHOD' => 'POST'];
+        $server = ['REQUEST_URI' => 'bad-request', 'REQUEST_METHOD' => 'POST'];
         $request = new Request([], [], [], [], [], $server, null);
-        $result  = $this->authenticator->supports($request);
+        $result = $this->authenticator->supports($request);
         $this->assertFalse($result);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\EventSubscriber\Doctrine;
@@ -41,5 +42,4 @@ class UserCreateSendMailSubscriber implements EventSubscriber
             'user' => $user,
         ]);
     }
-
 }

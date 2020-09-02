@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Mailer;
@@ -22,9 +23,6 @@ abstract class AbstractMailer
      */
     abstract public function create(array $parameters = []);
 
-    /**
-     * {@inheritdoc}
-     */
     public function send(array $parameters = [])
     {
         $message = $this->create($parameters);

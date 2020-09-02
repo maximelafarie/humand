@@ -4,7 +4,6 @@ namespace App\Tests\Serializer;
 
 use App\Dictionary\Dictionary\SimpleDictionary;
 use App\Serializer\DictionaryNormalizer;
-use Knp\DictionaryBundle\Dictionary;
 use PHPUnit\Framework\TestCase;
 
 class DictionaryNormalizerTest extends TestCase
@@ -40,7 +39,7 @@ class DictionaryNormalizerTest extends TestCase
                 [
                     'key' => 'bar',
                     'value' => 'Bar',
-                ]
+                ],
             ],
         ];
 

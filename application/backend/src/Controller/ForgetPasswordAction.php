@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -21,7 +22,7 @@ class ForgetPasswordAction extends AbstractController
 
     public function __invoke()
     {
-        $user       = $this->getUser();
+        $user = $this->getUser();
         $token = $this->tokenGenerator->generateToken();
 
         $user->setConfirmationToken($token);

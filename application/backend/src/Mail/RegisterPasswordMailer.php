@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Mail;
@@ -36,9 +37,9 @@ class RegisterPasswordMailer extends AbstractMailer
             ->from('admin@humand.test')
             ->to($user->getEmail())
             ->context([
-                'action_url'  => $this->activateFrontRouting.'/'.$user->getConfirmationToken(),
+                'action_url' => $this->activateFrontRouting . '/' . $user->getConfirmationToken(),
                 'action_text' => $this->translator->trans('email.activate_account.action_text'),
-                'user'        => $user,
+                'user' => $user,
             ])
         ;
     }

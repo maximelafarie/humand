@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Swagger;
@@ -78,10 +79,10 @@ final class SwaggerDecorator implements NormalizerInterface
                                 'name' => 'id',
                                 'in' => 'path',
                                 'required' => true,
-                                "schema" =>  [
-                                  "type" => "string"
+                                'schema' => [
+                                  'type' => 'string',
                                 ],
-                            ]
+                            ],
                         ],
                         'responses' => [
                             Response::HTTP_OK => [
@@ -93,6 +94,6 @@ final class SwaggerDecorator implements NormalizerInterface
             ],
         ];
 
-        return array_merge_recursive($docs, $otherDocumentation);
+        return \array_merge_recursive($docs, $otherDocumentation);
     }
 }
