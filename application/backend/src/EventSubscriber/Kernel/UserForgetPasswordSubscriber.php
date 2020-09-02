@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\EventSubscriber\Kernel;
@@ -26,8 +27,6 @@ class UserForgetPasswordSubscriber implements EventSubscriberInterface
 
     /**
      * Send email with confirmationToken.
-     *
-     * @param UserEvent $userEvent
      *
      * @throws \App\Mailer\MailerException
      */

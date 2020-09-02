@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Utils;
@@ -11,11 +12,11 @@ class RandomTokenGeneratorTest extends TestCase
     public function testItGenerateARandomToken()
     {
         $generator = new RandomTokenGenerator();
-        $token     = $generator->generateToken();
-        $token2    = $generator->generateToken();
+        $token = $generator->generateToken();
+        $token2 = $generator->generateToken();
 
         $this->assertStringMatchesFormat('%s', $token);
-        $this->assertEquals(mb_strlen($token), RandomTokenGenerator::TOKEN_LENGTH);
+        $this->assertEquals(\mb_strlen($token), RandomTokenGenerator::TOKEN_LENGTH);
 
         $this->assertNotEquals($token, $token2);
     }

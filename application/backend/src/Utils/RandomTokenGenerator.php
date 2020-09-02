@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Utils;
@@ -15,7 +16,7 @@ class RandomTokenGenerator
      */
     public function generateToken()
     {
-        $factory   = new Factory();
+        $factory = new Factory();
         $generator = $factory->getMediumStrengthGenerator();
 
         return $generator->generateString(

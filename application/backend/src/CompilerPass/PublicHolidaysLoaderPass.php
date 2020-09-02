@@ -23,7 +23,7 @@ class PublicHolidaysLoaderPass implements CompilerPassInterface
         $taggedServices = $container->findTaggedServiceIds(self::TAG_ID);
 
         foreach ($taggedServices as $id => $tags) {
-            $definition->addMethodCall('add', array(new Reference($id)));
+            $definition->addMethodCall('add', [new Reference($id)]);
         }
     }
 }

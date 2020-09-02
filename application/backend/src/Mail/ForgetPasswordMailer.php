@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Mail;
@@ -36,9 +37,9 @@ class ForgetPasswordMailer extends AbstractMailer
             ->from('admin@humand.test')
             ->to($user->getEmail())
             ->context([
-                'action_url'  => $this->resetFrontRouting.'/'.$user->getConfirmationToken(),
+                'action_url' => $this->resetFrontRouting . '/' . $user->getConfirmationToken(),
                 'action_text' => $this->translator->trans('email.forget_password.action_text'),
-                'user'        => $user,
+                'user' => $user,
             ])
         ;
     }

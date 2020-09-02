@@ -1,13 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Dictionary\Dictionary;
 
-
 use ArrayIterator;
-use Exception;
 use Knp\DictionaryBundle\Dictionary;
-use Traversable;
 
 class SimpleDictionary implements Dictionary
 {

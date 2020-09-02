@@ -37,6 +37,12 @@ jobs:
                     set -e
                     set -o pipefail
                     ~/.local/bin/pipenv run inv unitTests
+            - run:
+                  name: Code quality
+                  command: |
+                      set -e
+                      set -o pipefail
+                      ~/.local/bin/pipenv run inv csFixerDry
 
 workflows:
     version: 2

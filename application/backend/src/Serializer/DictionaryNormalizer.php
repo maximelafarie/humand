@@ -5,15 +5,11 @@ declare(strict_types=1);
 namespace App\Serializer;
 
 use Knp\DictionaryBundle\Dictionary;
-use Symfony\Component\Serializer\Exception\CircularReferenceException;
-use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
-use Symfony\Component\Serializer\Exception\LogicException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class DictionaryNormalizer implements NormalizerInterface
 {
-    public function normalize($object, string $format = null, array $context = array())
+    public function normalize($object, string $format = null, array $context = [])
     {
         $dictionary = [];
 
@@ -22,9 +18,9 @@ class DictionaryNormalizer implements NormalizerInterface
         }
 
         $dictionary = \array_merge($dictionary, [
-            '@id'     => '/api/dictionaries/' . $object->getName(),
-            '@type'   => 'Dictionary',
-            'name'    => $object->getName(),
+            '@id' => '/api/dictionaries/' . $object->getName(),
+            '@type' => 'Dictionary',
+            'name' => $object->getName(),
             'entries' => \array_map(
                 function ($id, $text) {
                     return ['key' => $id, 'value' => $text];

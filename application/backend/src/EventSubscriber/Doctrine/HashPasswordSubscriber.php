@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\EventSubscriber\Doctrine;
@@ -28,8 +29,6 @@ class HashPasswordSubscriber implements EventSubscriber
 
     /**
      * Encode user password if set.
-     *
-     * @param LifecycleEventArgs $args
      */
     public function prePersist(LifecycleEventArgs $args)
     {
@@ -44,8 +43,6 @@ class HashPasswordSubscriber implements EventSubscriber
 
     /**
      * Encode User password if new one is set.
-     *
-     * @param LifecycleEventArgs $args
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
@@ -58,9 +55,6 @@ class HashPasswordSubscriber implements EventSubscriber
         $this->encodePassword($entity);
     }
 
-    /**
-     * @param User $user
-     */
     private function encodePassword(User $user)
     {
         // No password to encode

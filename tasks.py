@@ -100,6 +100,24 @@ def installDb(c):
 
 
 @task
+def csFixer(c):
+    """
+    CsFix php files
+    """
+    with Builder(c):
+        docker_compose_run(c, 'php vendor/bin/php-cs-fixer fix --config=.php_cs.dist -vv', workdir='/home/app/application/backend')
+
+
+@task
+def csFixerDry(c):
+    """
+    CsFix php files
+    """
+    with Builder(c):
+        docker_compose_run(c, 'php vendor/bin/php-cs-fixer fix --dry-run --diff --config=.php_cs.dist -vv --using-cache=no', workdir='/home/app/application/backend')
+
+
+@task
 def jwtKeys(c):
     """
     Jwt config

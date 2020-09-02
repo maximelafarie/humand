@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\EventSubscriber\Kernel;
@@ -49,5 +50,4 @@ class UserForgetPasswordSubscriberTest extends TestCase
 
         $this->sub->sendEmail(new UserEvent($user));
     }
-
 }

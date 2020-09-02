@@ -21,7 +21,6 @@ class DictionaryDataProviderTest extends TestCase
 
     public function setUp()
     {
-
         $this->dictionary = new SimpleDictionary('fooDictionary', ['foo', 'bar', 'baz']);
         $this->collection = new Collection($this->dictionary, new SimpleDictionary('barName', ['bar', 'baz']));
 
@@ -41,8 +40,8 @@ class DictionaryDataProviderTest extends TestCase
 
         $this->assertIsArray($providerCollection);
         $this->assertCount(2, $providerCollection);
-        $this->assertArrayHasKey("fooDictionary", $providerCollection);
-        $this->assertSame($providerCollection["fooDictionary"], $this->dictionary);
+        $this->assertArrayHasKey('fooDictionary', $providerCollection);
+        $this->assertSame($providerCollection['fooDictionary'], $this->dictionary);
     }
 
     public function testItGetDictionaryItem()

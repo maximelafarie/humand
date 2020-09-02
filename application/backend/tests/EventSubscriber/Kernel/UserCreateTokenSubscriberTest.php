@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\EventSubscriber\Kernel;
@@ -41,7 +42,7 @@ class UserCreateTokenSubscriberTest extends TestCase
         $this->assertEquals(
             UserCreateTokenSubscriber::getSubscribedEvents(),
             [
-                KernelEvents::VIEW  => ['initializeTokenOnnUserCreate', EventPriorities::PRE_WRITE],
+                KernelEvents::VIEW => ['initializeTokenOnnUserCreate', EventPriorities::PRE_WRITE],
             ]
         );
     }
@@ -59,5 +60,4 @@ class UserCreateTokenSubscriberTest extends TestCase
 
         $this->sub->initializeTokenOnnUserCreate($event);
     }
-
 }

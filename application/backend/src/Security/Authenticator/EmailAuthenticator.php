@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security\Authenticator;
@@ -59,7 +60,7 @@ class EmailAuthenticator extends AbstractGuardAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-       return true;
+        return true;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
@@ -77,8 +78,6 @@ class EmailAuthenticator extends AbstractGuardAuthenticator
     }
 
     /**
-     * @param Request $request
-     *
      * @return bool
      */
     private function isAllowedRequest(Request $request)
