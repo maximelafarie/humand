@@ -25,6 +25,16 @@ final class SwaggerDecorator implements NormalizerInterface
     {
         $docs = $this->decorated->normalize($object, $format, $context);
 
+        $docs['components']['schemas']['Token'] = [
+            'type' => 'object',
+            'properties' => [
+                'token' => [
+                    'type' => 'string',
+                    'readOnly' => true,
+                ],
+            ],
+        ];
+
         $docs['components']['schemas']['Credentials'] = [
             'type' => 'object',
             'properties' => [
