@@ -1,0 +1,58 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "number-leading-zero": "never",
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignore": [
+          "after-comment",
+          "inside-block",
+          "blockless-after-same-name-blockless",
+          "blockless-after-blockless"
+        ]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "extend",
+          "at-root",
+          "debug",
+          "warn",
+          "error",
+          "if",
+          "else",
+          "for",
+          "each",
+          "while",
+          "mixin",
+          "include",
+          "content",
+          "return",
+          "function"
+        ]
+      }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "ngx-smart-modal",
+          "ngx-datatable",
+          "ng-select"
+        ]
+      }
+    ],
+    "font-family-no-missing-generic-family-keyword": [ 
+      true,
+      {
+        "ignoreFontFamilies": [
+          "icomoon"
+        ]
+      }
+    ],
+    "no-descending-specificity": null
+  }
+}

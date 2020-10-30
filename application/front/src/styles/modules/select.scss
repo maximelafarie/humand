@@ -1,0 +1,13 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-select.ng-select-base {
+  .ng-select-container {
+    border: 1px solid $cloud;
+    border-radius: 4px;
+    background-color: $white;
+    font-weight: $semi-bold;
+    font-size: 14px;
+    line-height: 22px;
+    color: $black;
+  }
+}

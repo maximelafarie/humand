@@ -1,0 +1,46 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@app/components": ["src/app/components"],
+      "@app/components/*": ["src/app/components/*"],
+      "@app/api": ["src/app/services/api"],
+      "@app/api/*": ["src/app/services/api/*"],
+      "@app/guards": ["src/app/guards"],
+      "@app/guards/*": ["src/app/guards/*"],
+      "@app/services": ["src/app/services"],
+      "@app/services/*": ["src/app/services/*"],
+      "@app/models": ["src/app/models"],
+      "@app/models/*": ["src/app/models/*"],
+      "@app/modules": ["src/app/modules"],
+      "@app/modules/*": ["src/app/modules/*"],
+      "@app/directives": ["src/app/directives"],
+      "@app/directives/*": ["src/app/directives/*"],
+      "@app/validators": ["src/app/validators"],
+      "@app/validators/*": ["src/app/validators/*"],
+      "@app/helpers": ["src/app/helpers"],
+      "@app/helpers/*": ["src/app/helpers/*"],
+      "@app/pipes": ["src/app/pipes"],
+      "@app/pipes/*": ["src/app/pipes/*"],
+      "@environments/*": ["src/environments/*"]
+    }
+  }
+}

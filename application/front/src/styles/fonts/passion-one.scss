@@ -1,0 +1,31 @@
+$font-path: '/assets/fonts/passion-one/';
+
+@font-face {
+  font-family: 'Passion One';
+  src:
+    url($font-path + 'PassionOne-Black.woff2') format('woff2'),
+    url($font-path + 'PassionOne-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Passion One';
+  src:
+    url($font-path + 'PassionOne-Bold.woff2') format('woff2'),
+    url($font-path + 'PassionOne-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Passion One';
+  src:
+    url($font-path + 'PassionOne-Regular.woff2') format('woff2'),
+    url($font-path + 'PassionOne-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

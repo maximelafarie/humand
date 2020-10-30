@@ -1,0 +1,39 @@
+@import 'core';
+
+:host {
+  display: block;
+  width: 100%;
+
+  form {
+    input {
+      margin-bottom: 22px;
+      margin-top: 6px;
+
+      &:last-of-type {
+        margin-bottom: 8px;
+      }
+    }
+
+    .forgot-link {
+      text-align: right;
+      margin-bottom: 40px;
+      font-style: italic;
+      font-size: 13px;
+      color: $deep-sea;
+    }
+
+    .error {
+      color: $error;
+    }
+  }
+
+  .align-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .logo {
+    margin-bottom: 37px;
+  }
+}

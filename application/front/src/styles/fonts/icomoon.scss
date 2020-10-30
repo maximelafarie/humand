@@ -1,0 +1,123 @@
+$font-path: "/assets/fonts/icomoon/";
+
+@font-face {
+  font-family: "icomoon";
+  src: url($font-path + "icomoon.eot?gnvjpg");
+  src:
+    url($font-path + "icomoon.eot?gnvjpg#iefix") format("embedded-opentype"),
+    url($font-path + "icomoon.ttf?gnvjpg") format("truetype"),
+    url($font-path + "icomoon.woff?gnvjpg") format("woff"),
+    url($font-path + "icomoon.svg?gnvjpg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-trier::before {
+  content: "\e900";
+  color: #dadada;
+}
+
+.icon-date::before {
+  content: "\e901";
+}
+
+.icon-error::before {
+  content: "\e902";
+  color: #f5222d;
+}
+
+.icon-fleche::before {
+  content: "\e903";
+}
+
+.icon-admin::before {
+  content: "\e904";
+  color: #fff;
+}
+
+.icon-formulaire::before {
+  content: "\e905";
+  color: #a2a2a2;
+}
+
+.icon-preMR::before {
+  content: "\e906";
+  color: #a2a2a2;
+}
+
+.icon-wallet::before {
+  content: "\e907";
+  color: #a2a2a2;
+}
+
+.icon-logout::before {
+  content: "\e908";
+  color: #a2a2a2;
+}
+
+.icon-user::before {
+  content: "\e909";
+  color: #a2a2a2;
+}
+
+.icon-add::before {
+  content: "\e90a";
+  color: #fff;
+}
+
+.icon-delete::before {
+  content: "\e90b";
+  color: #fff;
+}
+
+.icon-export::before {
+  content: "\e90c";
+  color: #fff;
+}
+
+.icon-flecheDroite::before {
+  content: "\e90d";
+  color: #fff;
+}
+
+.icon-save::before {
+  content: "\e90e";
+  color: #fff;
+}
+
+.icon-customer::before {
+  content: "\e90f";
+  color: #fff;
+}
+
+.icon-infos::before {
+  content: "\e910";
+  color: #fff;
+}
+
+.icon-quality::before {
+  content: "\e911";
+  color: #fff;
+}
+
+.icon-specs::before {
+  content: "\e912";
+  color: #fff;
+}

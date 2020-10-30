@@ -1,0 +1,91 @@
+@import "~ngx-smart-modal/ngx-smart-modal";
+
+.overlay.nsm-overlay-open {
+  background-color: rgba(21, 41, 68, .9);
+}
+
+.nsm-dialog {
+  max-width: 812px;
+}
+
+.nsm-content {
+  border: 1px solid #d1d8de;
+  border-radius: 5px;
+  background-color: $white;
+  box-shadow: 0 3px 7px 0 $black;
+  margin: 16px 26px;
+  width: 812px;
+
+  .nsm-body {
+    .modal-header {
+      display: flex;
+      height: 40px;
+      border-bottom: 1px solid #c6c6c6;
+
+      .title-modal {
+        align-self: center;
+        color: $mat-blue;
+        font-size: 20px;
+        font-weight: $semi-bold;
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    border-top: 1px solid #c6c6c6;
+    height: 56px;
+
+    .save-btn {
+      display: flex;
+      align-items: center;
+      align-self: flex-end;
+      justify-content: space-between;
+      padding: 12px 20px;
+      height: 32px;
+      width: 94px;
+      border-radius: 14px;
+      background-color: $mat-blue;
+      font-size: 11px;
+      font-weight: $semi-bold;
+
+      i {
+        margin: 0;
+
+        &::before {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .delete-btn {
+      display: flex;
+      align-items: center;
+      align-self: flex-end;
+      justify-content: space-between;
+      padding: 12px 14px;
+      height: 32px;
+      width: 94px;
+      border-radius: 14px;
+      background-color: #f8d7da;
+      font-size: 11px;
+      font-weight: $semi-bold;
+      color: #6e232a;
+
+      i {
+        margin: 0;
+
+        &::before {
+          color: #6e232a;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.nsm-dialog-btn-close {
+  height: 10px;
+  width: 10px;
+  color: $mat-blue;
+}
