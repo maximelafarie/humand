@@ -1,53 +1,64 @@
 {
   "name": "humand",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "config": "node ./src/environments/env.js",
+    "start": "npm run config -- --environment=dev && ng serve --configuration=dev --host=0.0.0.0",
+    "build": "npm run config -- --environment=prod && ng build --configuration=prod",
+    "test": "npm run config -- --environment=test && ng test --configuration=test",
+    "test:ci": "npm run config -- --environment=test && ng test --configuration=test --browsers ChromeHeadlessCI --code-coverage=true --watch=false",
+    "lint": "npm run lint:ts && npm run lint:styles",
+    "lint:ts": "ng lint",
+    "lint:styles": "stylelint \"src/**/*.scss\"",
+    "lint:fix": "stylelint \"src/**/*.scss\" --fix",
+    "e2e": "npm run config -- --environment=test && ng e2e --host=client --port=4201"
+  },
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.0.4",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "bulma": "^0.8.0",
-    "history": "^4.10.1",
-    "node-sass": "^4.13.0",
-    "ramda": "^0.26.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.4",
-    "redux-observable": "^1.2.0",
-    "rxjs": "^6.5.3",
-    "whatwg-fetch": "^3.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "@angular/animations": "~10.1.3",
+    "@angular/common": "~10.1.3",
+    "@angular/compiler": "~10.1.3",
+    "@angular/core": "~10.1.3",
+    "@angular/forms": "~10.1.3",
+    "@angular/platform-browser": "~10.1.3",
+    "@angular/platform-browser-dynamic": "~10.1.3",
+    "@angular/router": "~10.1.3",
+    "@ng-select/ng-select": "^5.0.7",
+    "@rars/ngx-webstorage": "^4.0.0",
+    "@swimlane/ngx-datatable": "^18.0.0",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.0",
+    "ngx-smart-modal": "^7.4.1",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-ramda": "^2.5.1",
-    "prettier": "^1.19.1"
+    "@angular-devkit/build-angular": "~0.1001.3",
+    "@angular/cli": "~10.1.3",
+    "@angular/compiler-cli": "~10.1.3",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-selenium-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.32",
+    "path": "^0.12.7",
+    "protractor": "~7.0.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.0.2"
   }
 }

@@ -1,0 +1,53 @@
+<header role="banner">
+    <img class="logo-humand no-select" src="assets/images/F.svg" alt="humand logo">
+
+    <nav>
+        <ul>
+            <li>
+                <a>
+                    <i class="icon-wallet"></i>
+                    Articles
+                </a>
+            </li>
+            <li>
+                <a>
+                    <i class="icon-preMR"></i>
+                    Pre Material Requests
+                </a>
+            </li>
+            <li>
+                <a>
+                    <i class="icon-formulaire"></i>
+                    Material Requests
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="right mla">
+        <div class="user-infos">
+            <p class="name">{{ userService.fullName }}</p>
+            <span class="role" *ngIf="userService.getUser()">{{ userService.getUser()?.roles[0] | dictionaryTranslate: { dictionary: 'user_role' } | async }}</span>
+        </div>
+
+        <div (click)="toggleMenu = !toggleMenu" (clickOutside)="toggleMenu = false" class="actions-btn">
+            <i class="icon-admin"></i>
+        </div>
+
+        <div *ngIf="toggleMenu" class="actions">
+            <ul>
+                <li [routerLink]="['/users']" *ngIf="isEditor">
+                    Users
+                    <i class="icon-user"></i>
+                </li>
+                <li (click)="logout()">
+                    Disconnect
+                    <i class="icon-logout"></i>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</header>

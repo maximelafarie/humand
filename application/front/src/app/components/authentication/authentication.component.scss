@@ -1,0 +1,64 @@
+@import "core";
+
+:host {
+  .auth-container {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    background-color: $white;
+
+    .auth-left {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      flex: 3;
+      color: $white;
+      background-color: $mat-blue;
+      background-image: url("/assets/images/auth_bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-top-right-radius: 38px;
+      border-bottom-right-radius: 38px;
+
+      .text {
+        width: 500px;
+        text-align: center;
+        padding-bottom: rem(60px);
+
+        .citation {
+          width: 500px;
+          text-align: center;
+          padding: 0 20px 50px;
+        }
+
+        .name {
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 14px;
+          padding-bottom: 7px;
+        }
+
+        .position {
+          width: rem(130px);
+          margin: 0 auto;
+          display: block;
+          font-size: 12px;
+          font-weight: 100;
+          font-style: italic;
+        }
+      }
+    }
+
+    .auth-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 5;
+      flex-direction: column;
+
+      .auth-modules {
+        width: 570px;
+      }
+    }
+  }
+}

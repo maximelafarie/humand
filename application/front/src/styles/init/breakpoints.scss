@@ -1,0 +1,14 @@
+$mobile: 568px;
+$phablet: 768px;
+$tablet: 992px;
+$laptop: 1200px;
+$desktop: 1440px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $mobile,
+  md: $phablet,
+  lg: $tablet,
+  xl: $laptop,
+  xxl: $desktop
+);

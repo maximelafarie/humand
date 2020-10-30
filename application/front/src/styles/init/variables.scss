@@ -1,0 +1,45 @@
+// Typography font-family
+$font-primary: "Montserrat", sans-serif;
+$secondary-font: "Passion One", cursive;
+$font-title: $secondary-font;
+$font-code: monospace;
+$font-ico: "icomoon";
+
+// Typography weight
+$extra-light: 200;
+$light: 300;
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$xx-bold: 900;
+
+// Common colors
+$deep-blue: #2c3e56;
+$deep-sea: #152944;
+$mat-blue: #598ca6;
+$white: #fff;
+$snow: #f7f8fb;
+$cloud: #d9d9d9;
+$black: #000;
+$error: #ff2c2c;
+
+$color-primary: $mat-blue;
+$color-font: $deep-blue;
+$color-background: #f4f8fb;
+
+// Other
+$transition: all ease .3s;
+
+$shadow: rgba(#333445, .7);
+
+$hover-opacity: .8;
+
+$br-max: 99rem;
+$br-round: 50%;
+$br-base: rem(12px);
+$br-base-min: rem(5px);
+
+$height-field: rem(24px);
+
+$sidenav-w: rem(65px);

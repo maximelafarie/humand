@@ -1,0 +1,17 @@
+@import "core";
+
+:host {
+  width: 100%;
+
+  .input-error {
+    border: 1px solid #ffa39e;
+    border-radius: 4px;
+    background-color: #fff1f0;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba($black, .85);
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+  }
+}

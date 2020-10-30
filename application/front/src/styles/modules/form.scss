@@ -1,0 +1,39 @@
+form {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  label {
+    color: $black;
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    font-family: $font-primary;
+    padding: 5px 12px;
+    border: 1px solid $cloud;
+    border-radius: 4px;
+    background-color: $white;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: $black;
+
+    &::placeholder {
+      font-weight: 400;
+      color: rgba(0, 0, 0, .25);
+    }
+
+    &.ng-invalid.ng-dirty {
+      border: 1px solid $error;
+    }
+
+    &.ng-invalid.ng-error-custom {
+      border: 1px solid $error;
+    }
+  }
+}

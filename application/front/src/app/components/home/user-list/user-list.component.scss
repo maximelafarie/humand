@@ -1,0 +1,125 @@
+@import "core";
+
+:host {
+  display: block;
+  width: 100%;
+
+  .user-container {
+    width: 80%;
+    margin: 0 auto;
+
+    .user-header {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      margin-bottom: 13px;
+      border-bottom: 1px solid #e8e8e8;
+
+      .title {
+        font-family: $secondary-font;
+        font-weight: $semi-bold;
+        font-size: 28px;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        color: $deep-sea;
+      }
+
+      .new-user-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 20px;
+        height: 32px;
+        border-radius: 14px;
+        background-color: $mat-blue;
+        font-size: 11px;
+        font-weight: $semi-bold;
+
+        i::before {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 52%;
+    margin: 0 auto;
+    margin-top: 23px;
+
+    div {
+      width: 100%;
+      position: relative;
+      margin-bottom: 15px;
+
+      label {
+        position: absolute;
+        right: 100%;
+        text-align: right;
+        min-width: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 10px;
+        color: rgba($color: $black, $alpha: .85);
+      }
+
+      input {
+        width: 100%;
+      }
+
+      .ng-select.ng-select-base {
+        width: 100%;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin-right: auto;
+
+      li {
+        margin-bottom: 5px;
+
+        label {
+          font-size: 14px;
+          color: rgba($color: $black, $alpha: .85);
+        }
+
+        input[type="checkbox"] {
+          display: unset;
+          padding: 0 8px;
+          margin-right: 9px;
+          appearance: none;
+          outline: 0;
+          cursor: pointer;
+          transition: 175ms cubic-bezier(.1, .1, .25, 1);
+
+          &::before {
+            position: absolute;
+            content: "";
+            display: block;
+            left: 10px;
+            width: 7px;
+            height: 15px;
+            border-style: solid;
+            border-color: $white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            opacity: 0;
+          }
+
+          &:checked {
+            color: $white;
+            border-color: #152944;
+            background: #152944;
+
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

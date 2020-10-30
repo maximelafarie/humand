@@ -1,0 +1,183 @@
+<div class="user-container">
+
+    <div class="user-header">
+        <h2 class="title">List of users</h2>
+        <button class="new-user-btn" (click)="createUser()">
+            <i class="icon-add"></i> New user
+        </button>
+    </div>
+
+    <ngx-datatable class="ngx-datatable-base"
+               id="ngx-datatable-user"
+               [columnMode]="'flex'"
+               [footerHeight]="0"
+               [headerHeight]="60"
+               [rowHeight]="'auto'"
+               [rows]="users"
+               [externalSorting]="true"
+               [sorts]="[datatableParams.getOrderDatatable()]"
+               [loadingIndicator]="loading"
+               (sort)="datatableParams.setOrder($event.sorts[0].prop, $event.sorts[0].dir)">
+        <ngx-datatable-column name="{{ columns?.lastName?.name }}"
+                            prop="{{ columns?.lastName?.prop }}"
+                            [sortable]="true"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <span class="uppercase red bold">{{ row.lastName }}</span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ columns?.firstName?.name }}"
+                            prop="{{ columns?.firstName?.prop }}"
+                            [sortable]="true"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <span class="red bold">{{ row.firstName }}</span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ columns?.role?.name }}"
+                            prop="{{ columns?.role?.prop }}"
+                            [sortable]="true"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <span>{{ row.roles[0] | dictionaryTranslate: { dictionary: 'user_role' } | async }}</span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ columns?.formulationValidator?.name }}"
+                            prop="{{ columns?.formulationValidator?.prop }}"
+                            [sortable]="false"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <div class="tac">
+                    <span [class.dot]="row.formulationValidator" class="transparent"></span>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ columns?.processValidator?.name }}"
+                            prop="{{ columns?.processValidator?.prop }}"
+                            [sortable]="false"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <div class="tac">
+                    <span [class.dot]="row.processValidator" class="transparent"></span>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ columns?.pigmentationValidator?.name }}"
+                            prop="{{ columns?.pigmentationValidator?.prop }}"
+                            [sortable]="false"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <div class="tac">
+                    <span [class.dot]="row.pigmentationValidator" class="transparent"></span>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ columns?.complianceValidator?.name }}"
+                            prop="{{ columns?.complianceValidator?.prop }}"
+                            [sortable]="false"
+                            [flexGrow]="1"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <div class="tac">
+                    <span [class.dot]="row.complianceValidator" class="transparent"></span>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Actions"
+                            [sortable]="false"
+                            [flexGrow]="1"
+                            [maxWidth]="145"
+                            [resizeable]="false">
+            <ng-template let-row="row"
+                        ngx-datatable-cell-template>
+                <button class="action-btn" (click)="openUser(row)">
+                    <i class="icon-flecheDroite"></i> Detail
+                </button>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>
+
+<ngx-smart-modal #userModal
+                 identifier="userModal"
+                 ariaLabel="User modal"
+                 [customClass]="'nsm-centered'">
+    
+    <div class="modal-header">
+        <h1 class="title-modal">Create an user</h1>
+    </div>
+   
+    <form [formGroup]="userForm" autocomplete="off" novalidate id="userForm">
+        <div>
+            <label for="lastName">Name</label>
+            <input id="lastName" formControlName="lastName">
+        </div>
+        <app-input-error [control]="userForm.get('lastName')"></app-input-error>
+        <div>
+            <label for="firstName">First name</label>
+            <input id="firstName" formControlName="firstName">
+        </div>
+        <app-input-error [control]="userForm.get('firstName')"></app-input-error>
+        <div>
+            <label for="email">Mail</label>
+            <input id="email" formControlName="email">
+        </div>
+        <app-input-error [control]="userForm.get('email')"></app-input-error>
+        <div>
+            <label for="role">Role</label>
+            <ng-select class="ng-select-base"
+                   [items]="dictionaries.roles"
+                   bindLabel="value"
+                   bindValue="key"
+                   [multiple]="false"
+                   [closeOnSelect]="true"
+                   formControlName="roles"
+                   [searchable]="false"
+                   [clearable]="true"
+                   labelForId="role"
+                   id="role">
+            </ng-select>
+        </div>
+        <app-input-error [control]="userForm.get('formulationValidator')"></app-input-error>
+        <ul *ngIf="isValidator">
+            <li class="mra">
+                <input type="checkbox" id="formulationValidator" formControlName="formulationValidator" class="ng-error-custom">
+                <label for="formulationValidator">Formulation</label>
+            </li>
+            <li class="mra">
+                <input type="checkbox" id="processValidator" formControlName="processValidator" class="ng-error-custom">
+                <label for="processValidator">Process</label>
+            </li>
+            <li class="mra">
+                <input type="checkbox" id="pigmentationValidator" formControlName="pigmentationValidator" class="ng-error-custom">
+                <label for="pigmentationValidator">Pigmentation</label>
+            </li>
+            <li class="mra">
+                <input type="checkbox" id="complianceValidator" formControlName="complianceValidator" class="ng-error-custom">
+                <label for="complianceValidator">Compliance</label>
+            </li>
+        </ul>
+    </form>
+
+    <div class="modal-footer">
+        <button *ngIf="userForm.get('id').value" (click)="deleteUser()" class="delete-btn mra">
+            Delete <i class="icon-delete"></i>
+        </button>
+        <button (click)="saveUser()" class="save-btn mla" [disabled]="loading || userForm.invalid">
+            Save <i class="icon-save"></i>
+        </button>
+    </div>
+</ngx-smart-modal>

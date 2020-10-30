@@ -1,0 +1,25 @@
+<img class="logo no-select mta" src="assets/images/logo.svg" alt="Formulation System logo">
+
+<form [formGroup]="form" (ngSubmit)="login()" autocomplete="off" novalidate id="loginForm">
+  <label for="username">Mail</label>
+  <input id="username" formControlName="username" placeholder="Your mail">
+
+  <label for="password">Password</label>
+  <input id="password" type="password" formControlName="password" placeholder="Your password">
+
+  <p *ngIf="username.hasError('badEmailFormat')" class="error">
+    Wrong email format
+  </p>
+  <p *ngIf="error.length" class="error" id="apiError">
+    {{ error }}
+  </p>
+
+  <div class="align-right">
+    <a class="forgot-link" [routerLink]="['/auth/forgot-password']" [state]="{ username: username.value }">Forgot your
+      password ?</a>
+
+    <button [disabled]="form.invalid || loading" id="loginBtn">
+      <i class="icon-flecheDroite"></i> Login
+    </button>
+  </div>
+</form>
